@@ -796,7 +796,7 @@ function HealingAsssignments.Mainframe:CreateOptions(TemplateNumber)
     Shaman:SetFont("Fonts\\FRIZQT__.TTF", 11)
 	Shaman:SetJustifyH("RIGHT")
     Shaman:SetText("Shaman")
-	Shaman:SetTextColor(0.96, 0.55, 0.73,1)
+	Shaman:SetTextColor(0.0, 0.44, 0.87,1)
 	
 
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.PriestCheckbox = CreateFrame("CheckButton", nil, self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content, "UICheckButtonTemplate")
