@@ -1,11 +1,11 @@
 HealingAsssignments = CreateFrame("Frame"); -- Event Frame
 HealingAsssignments.Minimap = CreateFrame("Frame",nil,Minimap) -- Minimap Frame
-HealingAsssignments.Mainframe = CreateFrame("Frame","VHAMainFrame",UIParent) -- Main Display Frame
+HealingAsssignments.Mainframe = CreateFrame("Frame","TBCHAMainFrame",UIParent) -- Main Display Frame
 HealingAsssignments.Syncframe = CreateFrame("Frame",nil,HealingAsssignments.Mainframe)
 
-tinsert(UISpecialFrames, "VHAMainFrame")
+tinsert(UISpecialFrames, "TBCHAMainFrame")
 
-VHA_VERSION = "2.1.7"
+TBCHA_VERSION = "0.0.1"
 HealingAsssignments:RegisterEvent("ADDON_LOADED")
 HealingAsssignments:RegisterEvent("RAID_ROSTER_UPDATE")
 HealingAsssignments:RegisterEvent("CHAT_MSG_WHISPER")
@@ -33,12 +33,12 @@ end
 
 function HealingAsssignments:OnEvent()
 	if event == "CHAT_MSG_ADDON" then
-		if HealingAsssignments.Mainframe.SyncCheckbox:GetChecked() == 1 and string.sub(arg1, 1, 3) == "VHA" and arg4 ~= UnitName("player") then
+		if HealingAsssignments.Mainframe.SyncCheckbox:GetChecked() == 1 and string.sub(arg1, 1, 3) == "TBCHA" and arg4 ~= UnitName("player") then
 			local TemplateNum = tonumber(string.sub(arg1, 5,6))
 			local TemplateName = string.sub(arg1, 8)
-			local NameArray = VHAstrsplit(arg2,"#")
+			local NameArray = TBCHAstrsplit(arg2,"#")
 			HealingAsssignments.Syncframe:Receive(arg4,TemplateNum,TemplateName,NameArray)
-		elseif HealingAsssignments.Mainframe.SyncCheckbox:GetChecked() == 1 and arg1 == "VHTrigger" and arg2 == "trigger" then HealingAsssignments.Syncframe:Send()
+		elseif HealingAsssignments.Mainframe.SyncCheckbox:GetChecked() == 1 and arg1 == "TBCHTrigger" and arg2 == "trigger" then HealingAsssignments.Syncframe:Send()
 		end
 	
 	elseif event == "RAID_ROSTER_UPDATE" then
@@ -56,11 +56,12 @@ function HealingAsssignments:OnEvent()
 			HealingAsssignments:AnswerAssignments(arg2)
 		end
 
-	elseif event == "ADDON_LOADED" and arg1 == "VanillaHealingAssignments" then -- replace Name here
+	elseif event == "ADDON_LOADED" and arg1 == "TBCHealingAssignments" then -- replace Name here
 		HealingAsssignments.Mainframe:ConfigureFrame() -- configure Main-Frame
 		HealingAsssignments.MessageBuffer = {}
 		HealingAsssignments.LastAddonMessageTime = 0;
-		if VhaFu then HealingAsssignments.Minimap:Hide() end
+		--TODO: fubar integration
+		--if VhaFu then HealingAsssignments.Minimap:Hide() end
 
 	end
 end
@@ -70,7 +71,7 @@ HealingAsssignments:SetScript("OnUpdate", HealingAsssignments.OnUpdate)
 
 
 -- from healCommm-1.0 addon / lua 5.1 workaround
-function VHAstrsplit(pString, pPattern)
+function TBCHAstrsplit(pString, pPattern)
 	local Table = {}
 	local fpat = "(.-)" .. pPattern
 	local last_end = 1
@@ -175,8 +176,8 @@ function HealingAsssignments.Mainframe:ConfigureFrame()
 	
 	
 	-- Bottomright Background Frame
-	local backdrop = {bgFile = "Interface\\AddOns\\VanillaHealingAssignments\\Media\\Icon"}  -- path to the background texture
-	local backdropMouseOver = {bgFile = "Interface\\AddOns\\VanillaHealingAssignments\\Media\\IconMouseOver"}  -- path to the background texture
+	local backdrop = {bgFile = "Interface\\AddOns\\TBCHealingAssignments\\Media\\Icon"}  -- path to the background texture
+	local backdropMouseOver = {bgFile = "Interface\\AddOns\\TBCHealingAssignments\\Media\\IconMouseOver"}  -- path to the background texture
 	self.Background.Icon:SetFrameStrata("LOW")
 	self.Background.Icon:SetWidth(64) -- Set these to whatever height/width is needed 
 	self.Background.Icon:SetHeight(64) -- for your Texture
@@ -530,7 +531,7 @@ function HealingAsssignments.Mainframe:ConfigureFrame()
 	local TitleFontString = self.Background.Topleft:CreateFontString(nil, "OVERLAY")
     TitleFontString:SetPoint("TOPLEFT", self, "TOPLEFT", 290, -18)
     TitleFontString:SetFont("Fonts\\FRIZQT__.TTF", 14)
-    TitleFontString:SetText("Vanilla Healing Assignments")
+    TitleFontString:SetText("TBC Healing Assignments")
 	
 	-- Bottom String
 	self.BottomLeftFontString = self.Background.Topleft:CreateFontString(nil, "OVERLAY")
@@ -1052,7 +1053,7 @@ function HealingAsssignments.Mainframe:CreateOptions(TemplateNumber)
     BottomText:SetPoint("TOPLEFT", 150, -370)
     BottomText:SetFont("Fonts\\FRIZQT__.TTF", 11)
 	BottomText:SetJustifyH("CENTER")
-    BottomText:SetText("Version "..VHA_VERSION.." - by Renew @ vanillagaming.org")
+    BottomText:SetText("Version "..TBCHA_VERSION.." - by Renew @ vanillagaming.org | ported to TBC by Poetic")
 	BottomText:SetTextColor(1, 1, 1,0.5)
 
 end
@@ -1101,7 +1102,7 @@ function HealingAsssignments.Minimap:CreateMinimapIcon()
 	
 	function self:OnEnter()
 		GameTooltip:SetOwner(HealingAsssignments.Minimap, "ANCHOR_LEFT");
-		GameTooltip:SetText("Vanilla Healing Assignments");
+		GameTooltip:SetText("TBC Healing Assignments");
 		GameTooltip:AddLine("Left Click to show/hide menu.",1,1,1);
 		GameTooltip:AddLine("Right Click to post open assignment window.",1,1,1);
 		GameTooltip:AddLine("Middle Button Click to move Icon.",1,1,1);
@@ -1139,7 +1140,7 @@ function HealingAsssignments.Minimap:CreateMinimapIcon()
 	local icon = self:CreateTexture(nil, "BACKGROUND")
 	icon:SetWidth(20)
 	icon:SetHeight(20)
-	icon:SetTexture("Interface\\AddOns\\VanillaHealingAssignments\\Media\\Icon")
+	icon:SetTexture("Interface\\AddOns\\TBCHealingAssignments\\Media\\Icon")
 	icon:SetTexCoord(0.18, 0.82, 0.18, 0.82)
 	icon:SetPoint('CENTER', 0, 0)
 	self.icon = icon

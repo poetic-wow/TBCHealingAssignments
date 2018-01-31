@@ -199,7 +199,7 @@ end
 
 function HealingAsssignments.Syncframe:TriggerSync()
 	if HealingAsssignments.Mainframe.SyncCheckbox:GetChecked() == 1 then
-		SendAddonMessage("VHTrigger","trigger", "RAID")
+		SendAddonMessage("TBCHTrigger","trigger", "RAID")
 	end
 end
 
@@ -269,7 +269,7 @@ function HealingAsssignments.Syncframe:Send()
 		if TankNum == nil or TankNum == 0 then 
 			if n<10 then TemplateNumberString = "0"..n else TemplateNumberString = n end
 			SendString = " "
-			SendAddonMessage("VHA$"..TemplateNumberString.."$"..TemplateName ,SendString, "RAID")	
+			SendAddonMessage("TBCHA$"..TemplateNumberString.."$"..TemplateName ,SendString, "RAID")	
 		end
 		for i=1,TankNum do
 			SendString = " "
@@ -284,7 +284,7 @@ function HealingAsssignments.Syncframe:Send()
 				SendString = SendString..HealerName.."#"
 			end
 			if n<10 then TemplateNumberString = "0"..n else TemplateNumberString = n end
-			SendAddonMessage("VHA$"..TemplateNumberString.."$"..TemplateName ,SendString, "RAID")
+			SendAddonMessage("TBCHA$"..TemplateNumberString.."$"..TemplateName ,SendString, "RAID")
 		end
 	end
 end

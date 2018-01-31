@@ -270,14 +270,14 @@ end
 
 function HealingAsssignmentsTextMenu(arg)
 	if arg == nil or arg == "" then
-		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 Vanilla Healing Assignments:|r This is help topic for |cFFFFFF00 /vha|r",1,1,1);
-		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 VHA:|r |cFFFFFF00 /vha post|r - post opened Assignments.",1,1,1);
-		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 VHA:|r |cFFFFFF00 /vha menu|r - show/hide the GUI Menu.",1,1,1);
-		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 VHA:|r |cFFFFFF00 /vha color|r - enable/disable colored Postings.",1,1,1);
-		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 VHA:|r |cFFFFFF00 /vha icon|r - hide/show Minimap Icon.",1,1,1);
-		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 VHA:|r |cFFFFFF00 /vha sync|r - sync all Assignments.",1,1,1);
-		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 VHA:|r |cFFFFFF00 /vha warnings|r - enable/disable Death warnings.",1,1,1);
-		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 VHA:|r |cFFFFFF00 /vha delete|r - delete Database |cFFFF0000 (use only if error - it deletes everything! - instantly relog after!)|r.",1,1,1);
+		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 TBC Healing Assignments:|r This is help topic for |cFFFFFF00 /tbcha|r",1,1,1);
+		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 TBCHA:|r |cFFFFFF00 /tbcha post|r - post opened Assignments.",1,1,1);
+		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 TBCHA:|r |cFFFFFF00 /tbcha menu|r - show/hide the GUI Menu.",1,1,1);
+		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 TBCHA:|r |cFFFFFF00 /tbcha color|r - enable/disable colored Postings.",1,1,1);
+		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 TBCHA:|r |cFFFFFF00 /tbcha icon|r - hide/show Minimap Icon.",1,1,1);
+		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 TBCHA:|r |cFFFFFF00 /tbcha sync|r - sync all Assignments.",1,1,1);
+		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 TBCHA:|r |cFFFFFF00 /tbcha warnings|r - enable/disable Death warnings.",1,1,1);
+		DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00 TBCHA:|r |cFFFFFF00 /tbcha delete|r - delete Database |cFFFF0000 (use only if error - it deletes everything! - instantly relog after!)|r.",1,1,1);
 	else
 		if arg == "post" then
 			HealingAsssignments:PostAssignments()
@@ -290,28 +290,28 @@ function HealingAsssignmentsTextMenu(arg)
 			if HealingAsssignments.Minimap:IsVisible() then HealingAsssignments.Minimap:Hide()
 			else HealingAsssignments.Minimap:Show() end
 		elseif arg == "warnings" then
-			if HealingAsssignments.Mainframe.DeathWarningCheckbox:GetChecked() == nil then HealingAsssignments.Mainframe.DeathWarningCheckbox:SetChecked(1); DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00VHA|r: Death Warnings enabled",1,1,1)
-			else HealingAsssignments.Mainframe.DeathWarningCheckbox:SetChecked(nil) DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00VHA|r: Death Warnings disabled",1,1,1) end
+			if HealingAsssignments.Mainframe.DeathWarningCheckbox:GetChecked() == nil then HealingAsssignments.Mainframe.DeathWarningCheckbox:SetChecked(1); DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00TBCHA|r: Death Warnings enabled",1,1,1)
+			else HealingAsssignments.Mainframe.DeathWarningCheckbox:SetChecked(nil) DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00TBCHA|r: Death Warnings disabled",1,1,1) end
 			if HealingAsssignments.Mainframe.DeathWarningCheckbox:GetChecked() == nil then HealingAssignmentsTemplates.Options.Deathwarnings = nil
 			elseif HealingAsssignments.Mainframe.DeathWarningCheckbox:GetChecked() == 1 then HealingAssignmentsTemplates.Options.Deathwarnings = 1 end
 		elseif arg == "color" then
-			if HealingAsssignments.Mainframe.ColoredPostingsCheckbox:GetChecked() == nil then HealingAsssignments.Mainframe.ColoredPostingsCheckbox:SetChecked(1); DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00VHA|r: colored postings enabled",1,1,1)
-			else HealingAsssignments.Mainframe.ColoredPostingsCheckbox:SetChecked(nil) DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00VHA|r: colored postings disabled",1,1,1) end
+			if HealingAsssignments.Mainframe.ColoredPostingsCheckbox:GetChecked() == nil then HealingAsssignments.Mainframe.ColoredPostingsCheckbox:SetChecked(1); DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00TBCHA|r: colored postings enabled",1,1,1)
+			else HealingAsssignments.Mainframe.ColoredPostingsCheckbox:SetChecked(nil) DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00TBCHA|r: colored postings disabled",1,1,1) end
 		elseif arg == "delete" then
 			HealingAssignmentsTemplates ={}
 		else
-			DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00VHA:|r unknown command",1,0.3,0.3);
+			DEFAULT_CHAT_FRAME:AddMessage("|cFF00FF00TBCHA:|r unknown command",1,0.3,0.3);
 		end
 	end
 end
 
 -- binding list
-BINDING_HEADER_HEAD = "Vanilla Healing Assignments"
+BINDING_HEADER_HEAD = "TBC Healing Assignments"
 
 -- slashcommands
-SlashCmdList['VANILLA_HEALING_ASSIGNMENTS'] = HealingAsssignmentsTextMenu
-SLASH_VANILLA_HEALING_ASSIGNMENTS1 = '/vha'
-SLASH_VANILLA_HEALING_ASSIGNMENTS2 = '/VHA'
+SlashCmdList['TBC_HEALING_ASSIGNMENTS'] = HealingAsssignmentsTextMenu
+SLASH_TBC_HEALING_ASSIGNMENTS1 = '/tbcha'
+SLASH_TBC_HEALING_ASSIGNMENTS2 = '/TBCHA'
 
 
 function HealingAsssignments:SendChatMessage(messageID, message, extra ,channel)

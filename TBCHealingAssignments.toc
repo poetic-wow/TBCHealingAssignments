@@ -1,8 +1,8 @@
-## Interface: 11200
-## Title: Vanilla Healing Assignments
+## Interface: 24300
+## Title: TBC Healing Assignments
 ## Author: |cff00FF00Renew @ vanillagaming.org
-## Version: 2.02
-## Notes: Addon for Healing Assignments - by |cff00FF00Renew @ vanillagaming.org
+## Version: 0.0.1
+## Notes: Addon for Healing Assignments - ported by Poetic
 ## DefaultState: Enabled
 ## LoadOnDemand: 0
 ## SavedVariables: HealingAssignmentsTemplates
