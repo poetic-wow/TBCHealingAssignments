@@ -797,7 +797,6 @@ function HealingAsssignments.Mainframe:CreateOptions(TemplateNumber)
 	Shaman:SetJustifyH("RIGHT")
     Shaman:SetText("Shaman")
 	Shaman:SetTextColor(0.0, 0.44, 0.87,1)
-	
 
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.PriestCheckbox = CreateFrame("CheckButton", nil, self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content, "UICheckButtonTemplate")
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.PriestCheckbox:SetPoint("TOPLEFT",150,-100)
@@ -822,12 +821,25 @@ function HealingAsssignments.Mainframe:CreateOptions(TemplateNumber)
 	Paladin:SetJustifyH("RIGHT")
     Paladin:SetText("Paladin")
 	Paladin:SetTextColor(0.96, 0.55, 0.73,1)
+
+	-- TODO
+	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.RaidCheckbox = CreateFrame("CheckButton", nil, self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content, "UICheckButtonTemplate")
+	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.RaidCheckbox:SetPoint("TOPLEFT",450,-100)
+	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.RaidCheckbox:SetFrameStrata("LOW")
+	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.RaidCheckbox:SetScript("OnClick", function () PlaySound("igMainMenuOptionCheckBoxOn") end)
+
+	local Raid = self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content:CreateFontString(nil, "OVERLAY")
+	Raid:SetPoint("TOPLEFT", 490, -110)
+	Raid:SetFont("Fonts\\FRIZQT__.TTF", 11)
+	Raid:SetJustifyH("RIGHT")
+    Raid:SetText("Raid")
+	Raid:SetTextColor(1, 0.49, 0, 1)
 	
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.LeftsideCheckbox = CreateFrame("CheckButton", nil, self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content, "UICheckButtonTemplate")
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.LeftsideCheckbox:SetPoint("TOPLEFT",150,-130)
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.LeftsideCheckbox:SetFrameStrata("LOW")
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.LeftsideCheckbox:SetScript("OnClick", function () PlaySound("igMainMenuOptionCheckBoxOn") end)
-	
+
 	local Leftside = self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content:CreateFontString(nil, "OVERLAY")
     Leftside:SetPoint("TOPLEFT", 190, -140)
     Leftside:SetFont("Fonts\\FRIZQT__.TTF", 11)
@@ -846,6 +858,19 @@ function HealingAsssignments.Mainframe:CreateOptions(TemplateNumber)
 	Rightside:SetJustifyH("RIGHT")
     Rightside:SetText("Right Side")
 	Rightside:SetTextColor(0, 0, 1,1)
+
+	-- TODO
+	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.CompassCheckbox = CreateFrame("CheckButton", nil, self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content, "UICheckButtonTemplate")
+	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.CompassCheckbox:SetPoint("TOPLEFT",450,-130)
+	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.CompassCheckbox:SetFrameStrata("LOW")
+	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.CompassCheckbox:SetScript("OnClick", function () PlaySound("igMainMenuOptionCheckBoxOn") end)
+
+	local Compass = self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content:CreateFontString(nil, "OVERLAY")
+	Compass:SetPoint("TOPLEFT", 490, -140)
+	Compass:SetFont("Fonts\\FRIZQT__.TTF", 11)
+	Compass:SetJustifyH("RIGHT")
+    Compass:SetText("Compass")
+	Compass:SetTextColor(1, 0.49, 0, 1)
 	
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.CustomCheckbox = CreateFrame("CheckButton", nil, self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content, "UICheckButtonTemplate")
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.CustomCheckbox:SetPoint("TOPLEFT",150,-160)
@@ -888,7 +913,7 @@ function HealingAsssignments.Mainframe:CreateOptions(TemplateNumber)
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.ColoredPostingsCheckbox:SetFrameStrata("LOW")
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.ColoredPostingsCheckbox:SetScript("OnEnter", function() 
 		GameTooltip:SetOwner(HealingAsssignments.Mainframe, "ANCHOR_CURSOR");
-		GameTooltip:SetText("Warning: Colored Text is against server rules! Dont post in public channels :)", 1, 0, 0, 1, 1);
+		GameTooltip:SetText("Warning: Colored Text may be against server rules! Don't post in public channels :)", 1, 0, 0, 1, 1);
 		GameTooltip:Show()
 	end)
 	self.Foreground.Profile[1].Template[TemplateNumber].Assigments.Content.ColoredPostingsCheckbox:SetScript("OnLeave", function() GameTooltip:Hide() end)
