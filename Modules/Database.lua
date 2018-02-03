@@ -9,6 +9,8 @@ function HealingAsssignments.Mainframe:PopulateTankDropdown()
 	local LeftsideCheck = HealingAsssignments.Mainframe.Foreground.Profile[1].Template[OptionsFrame].Assigments.Content.LeftsideCheckbox:GetChecked()
 	local RightsideCheck = HealingAsssignments.Mainframe.Foreground.Profile[1].Template[OptionsFrame].Assigments.Content.RightsideCheckbox:GetChecked()
 	local CustomCheckbox = HealingAsssignments.Mainframe.Foreground.Profile[1].Template[OptionsFrame].Assigments.Content.CustomCheckbox:GetChecked()
+	local RaidCheckbox = HealingAsssignments.Mainframe.Foreground.Profile[1].Template[OptionsFrame].Assigments.Content.RaidCheckbox:GetChecked()
+	local CompassCheckbox = HealingAsssignments.Mainframe.Foreground.Profile[1].Template[OptionsFrame].Assigments.Content.CompassCheckbox:GetChecked()
 	
 	local info = {};
 	for i=1,table.getn(HealingAsssignments.Raiddatabase) do
@@ -44,41 +46,112 @@ function HealingAsssignments.Mainframe:PopulateTankDropdown()
 		end
 	end
 	if LeftsideCheck == 1 then 
-		-- create emtpy field to deleting
 		info.text = "Left Side"
 		info.textR = 1; info.textG = 0; info.textB = 0;
 		info.checked = false
 		info.func = function()
-		UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
 			HealingAsssignments:UpdateRaidDataBase()
 		end
 		UIDropDownMenu_AddButton(info);
 	end
 	
 	if RightsideCheck == 1 then 
-		-- create emtpy field to deleting
 		info.text = "Right Side"
 		info.textR = 0; info.textG = 0; info.textB = 1;
 		info.checked = false
 		info.func = function()
-		UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
 			HealingAsssignments:UpdateRaidDataBase()
 		end
 		UIDropDownMenu_AddButton(info);
 	end
 	
-	if CustomCheckbox == 1 then 
-		-- create emtpy field to deleting
-		info.text = HealingAsssignments.Mainframe.Foreground.Profile[1].Template[OptionsFrame].Assigments.Content.CustomCheckboxText:GetText()
-		info.textR = 0; info.textG = 1; info.textB = 0;
+	if RaidCheckbox == 1 then 
+		info.text = "Raid"
+		info.textR = 1; info.textG = 0.49; info.textB = 0;
 		info.checked = false
 		info.func = function()
-		UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
 			HealingAsssignments:UpdateRaidDataBase()
 		end
 		UIDropDownMenu_AddButton(info);
 	end
-	
+
+	if CompassCheckbox == 1 then 
+		info.text = "North"
+		info.textR = 0.94; info.textG = 0.31; info.textB = 0.05;
+		info.checked = false
+		info.func = function()
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			HealingAsssignments:UpdateRaidDataBase()
+		end
+		UIDropDownMenu_AddButton(info);
+
+		info.text = "NorthEast"
+		info.textR = 0.94; info.textG = 0.31; info.textB = 0.05;
+		info.checked = false
+		info.func = function()
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			HealingAsssignments:UpdateRaidDataBase()
+		end
+		UIDropDownMenu_AddButton(info);
+
+		info.text = "East"
+		info.textR = 0.94; info.textG = 0.31; info.textB = 0.05;
+		info.checked = false
+		info.func = function()
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			HealingAsssignments:UpdateRaidDataBase()
+		end
+		UIDropDownMenu_AddButton(info);
+
+		info.text = "SouthEast"
+		info.textR = 0.94; info.textG = 0.31; info.textB = 0.05;
+		info.checked = false
+		info.func = function()
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			HealingAsssignments:UpdateRaidDataBase()
+		end
+		UIDropDownMenu_AddButton(info);
+
+		info.text = "South"
+		info.textR = 0.94; info.textG = 0.31; info.textB = 0.05;
+		info.checked = false
+		info.func = function()
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			HealingAsssignments:UpdateRaidDataBase()
+		end
+		UIDropDownMenu_AddButton(info);
+
+		info.text = "SouthWest"
+		info.textR = 0.94; info.textG = 0.31; info.textB = 0.05;
+		info.checked = false
+		info.func = function()
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			HealingAsssignments:UpdateRaidDataBase()
+		end
+		UIDropDownMenu_AddButton(info);
+
+		info.text = "West"
+		info.textR = 0.94; info.textG = 0.31; info.textB = 0.05;
+		info.checked = false
+		info.func = function()
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			HealingAsssignments:UpdateRaidDataBase()
+		end
+		UIDropDownMenu_AddButton(info);
+
+		info.text = "NorthWest"
+		info.textR = 0.94; info.textG = 0.31; info.textB = 0.05;
+		info.checked = false
+		info.func = function()
+			UIDropDownMenu_SetSelectedID(GlobalTankDropDownID, this:GetID(), 0);
+			HealingAsssignments:UpdateRaidDataBase()
+		end
+		UIDropDownMenu_AddButton(info);
+	end
+
 	-- create emtpy field to deleting
 	info.text = " "
 	info.checked = false
@@ -263,11 +336,17 @@ function HealingAsssignments:UpdateRaidDataBase()
 						foundName = 1;
 					end	
 			end
+
 			-- check for additional tanks
-			if TankName == "Left Side" then getglobal(HealingAsssignments.Mainframe.Foreground.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].Assigments.Content.Frame[i].Tank[i]:GetName().."Text"):SetTextColor(1,0,0,1) end
-			if TankName == "Right Side" then getglobal(HealingAsssignments.Mainframe.Foreground.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].Assigments.Content.Frame[i].Tank[i]:GetName().."Text"):SetTextColor(0,0,1,1) end
-			if foundName == 0 and TankName ~= "Right Side" and TankName ~= "Left Side" then getglobal(HealingAsssignments.Mainframe.Foreground.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].Assigments.Content.Frame[i].Tank[i]:GetName().."Text"):SetTextColor(0,1,0,1) end
-			
+			if foundName == 0
+			then
+				if TankName == "Left Side" then getglobal(HealingAsssignments.Mainframe.Foreground.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].Assigments.Content.Frame[i].Tank[i]:GetName().."Text"):SetTextColor(1,0,0,1) end
+				if TankName == "Right Side" then getglobal(HealingAsssignments.Mainframe.Foreground.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].Assigments.Content.Frame[i].Tank[i]:GetName().."Text"):SetTextColor(0,0,1,1) end
+				if TankName == "Raid" then getglobal(HealingAsssignments.Mainframe.Foreground.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].Assigments.Content.Frame[i].Tank[i]:GetName().."Text"):SetTextColor(1, 0.49, 0, 1) end
+				if TankName == "North" or TankName == "NorthEast" or TankName == "East" or TankName == "SouthEast" or TankName == "South" or TankName == "SouthWest" or TankName == "West" or TankName == "NorthWest"
+					then getglobal(HealingAsssignments.Mainframe.Foreground.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].Assigments.Content.Frame[i].Tank[i]:GetName().."Text"):SetTextColor(0.94, 0.31, 0.05, 1) end
+			end
+
 			HealerNum = HealingAssignmentsTemplates.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].TankHealer[i]
 			if HealerNum == nil then HealerNum = 0 end
 			HealingAssignmentsTemplates.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].Tankhealernames[i].Healer = {}
