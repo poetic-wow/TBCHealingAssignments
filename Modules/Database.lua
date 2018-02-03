@@ -357,9 +357,9 @@ function HealingAsssignments:UpdateRaidDataBase()
 				if HealerName == nil then HealerName = " " end
 				HealingAssignmentsTemplates.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].Tankhealernames[i].Healer[j] = HealerName
 				
-				for v=1,table.getn(HealingAsssignments.Raiddatabase) do
-				if HealingAsssignments.Raiddatabase[v].Name == HealerName then HealingAsssignments.Raiddatabase[v] = {} end
-				end
+				--for v=1,table.getn(HealingAsssignments.Raiddatabase) do
+				--	if HealingAsssignments.Raiddatabase[v].Name == HealerName then HealingAsssignments.Raiddatabase[v] = {} end
+				--end
 				-- set standard color
 				
 				getglobal(HealingAsssignments.Mainframe.Foreground.Profile[HealingAsssignments.Mainframe.ActiveProfile].Template[activeFrame].Assigments.Content.Frame[i].Healer[j]:GetName().."Text"):SetTextColor(1,0,0,1)
