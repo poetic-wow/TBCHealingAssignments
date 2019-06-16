@@ -246,7 +246,7 @@ function HealingAsssignments:GetColoredString(NameString,Deathwarn)
 		elseif Class == "ROGUE" then Color = "FFF569"
 		elseif Class == "WARLOCK" then Color = "9482C9"
 		elseif Class == "DRUID" then Color = "FF7D0A"
-		elseif Class == "SHAMAN" then Color = "F58CBA"
+		elseif Class == "SHAMAN" then Color = "3366ff"
 		elseif Class == "PRIEST" then Color = "FFFFFF"
 		elseif Class == "PALADIN" then Color = "F58CBA"
 		else Color = "00FF00" end
